@@ -4,20 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="./output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <title>개발자 포트폴리오</title>
 </head>
 <body>
-<header class="sticky top-0">
-  <nav>
-    <div>
-      <h1>김영훈</h1>
-      <p>풀스택 개발자</p>
+<header class="sticky top-0 backdrop-blur-lg bg-opacity-90">
+  <nav class="container max-w-4xl mx-auto px-6 py-3 flex justify-between items-center">
+    <div class="flex items-center space-x-4">
+      <h1 class="text-2xl font-bold">김영훈</h1>
+      <p class="text-sm text-gray-500">풀스택 개발자</p>
     </div>
-    <div>
-      <a href="#home">홈</a>
-      <a href="#home">소개</a>
-      <a href="#home">기술</a>
-      <a href="#home">프로젝트</a>
+    <div class="flex items-center gap-x-6">
+      <a href="#home" class="hover:text-blue-500 transition-colors">홈</a>
+      <a href="#about" class="hover:text-blue-500 transition-colors">소개</a>
+      <a href="#skills" class="hover:text-blue-500 transition-colors">기술</a>
+      <a href="#projects" class="hover:text-blue-500 transition-colors">프로젝트</a>
+      <a href="#contact" class="hover:text-blue-500 transition-colors">연락처</a>
+      <button class="p-2 w-10 h-10 rounded-full bg-gray-200 focus:outline-none focus:ring focus:ring-blue-500 transition ease-in-out">
+        <i class="fas fa-moon"></i>
+      </button>
     </div>
   </nav>
 </header>
