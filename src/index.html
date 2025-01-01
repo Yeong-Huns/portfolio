@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" class="dark">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,19 +8,33 @@
   <title>개발자 포트폴리오</title>
 </head>
 <script>
-  const theme = document.documentElement.classList;
-  const content = document.querySelector('#dark-btn');
-
+  const theme = document.documentElement.classList
   function toggleTheme() {
-    theme.classList.toggle('dark');
+    const button = document.querySelector('#dark-btn');
+    const icon = button.querySelector('i');
+    if(theme.contains('dark')) {
+      localStorage.theme = 'light';
+      icon.className = 'fas fa-moon text-gray-700';
+    }
+    else {
+      localStorage.theme = 'dark';
+      icon.className = 'fa-solid fa-sun text-yellow-400';
+    }
+    theme.toggle('dark');
   }
+
+  const init = () => {
+    if(localStorage.theme === 'dark') theme.add('dark')
+    else theme.remove('dark');
+  };
+  init();
 </script>
-<body>
+<body class="dark:bg-gray-900 bg-white dark:text-white text-black min-h-screen transition-colors duration-300">
 <header class="sticky top-0 backdrop-blur-lg bg-opacity-90">
   <nav class="container max-w-4xl mx-auto px-6 py-3 flex justify-between items-center">
     <div class="flex items-center space-x-4">
       <h1 class="text-2xl font-bold">김영훈</h1>
-      <p class="text-sm text-gray-500">풀스택 개발자</p>
+      <p class="text-sm text-gray-500 dark:text-gray-300">풀스택 개발자</p>
     </div>
     <div class="flex items-center gap-x-6">
       <a href="#home" class="hover:text-blue-500 transition-colors">홈</a>
@@ -28,8 +42,8 @@
       <a href="#skills" class="hover:text-blue-500 transition-colors">기술</a>
       <a href="#projects" class="hover:text-blue-500 transition-colors">프로젝트</a>
       <a href="#contact" class="hover:text-blue-500 transition-colors">연락처</a>
-      <button class="p-2 w-10 h-10 rounded-full bg-gray-200 focus:outline-none focus:ring focus:ring-blue-500 transition ease-in-out" id="dark-btn">
-        <i class="fas fa-moon"></i>
+      <button class="p-2 w-10 h-10 rounded-full bg-gray-200 focus:outline-none focus:ring focus:ring-blue-500 transition ease-in-out dark:bg-gray-700" id="dark-btn" onclick="toggleTheme()">
+        <i class="fas fa-moon text-gray-700 dark:text-yellow-400"></i>
       </button>
     </div>
   </nav>
@@ -45,7 +59,7 @@
     <div class="text-right">
       <h1 class="text-4xl font-bold mb-2">김영훈</h1>
       <p class="text-xl mb-4">도전속에서 성장하는 개발자</p>
-      <p class="text-gray-600">
+      <p class="text-gray-600 dark:text-gray-400">
         풀스택 개발자로서 1년간의 교육을 통해 Spring / Spring Boot / Vue.js를 활용한 다양한 프로젝트를 경험했습니다.
         한국소프트웨어 산업협회에서는 최우수상을,
         과학기술정보통신부 주관 우수성과 공유 컨퍼런스에서 우수상을 받으면서 이러한 수상 경험을 통해 전문성을 키우고자 노력했습니다.
@@ -56,17 +70,17 @@
   <section class="mb-16" id="about">
     <h2 class="text-3xl font-bold mb-6">소개</h2>
     <div class="grid grid-cols-2 gap-6">
-      <article class="bg-gray-100 shadow-md rounded-lg p-6 hover:scale-105 transition ease-in-out">
+      <article class="bg-gray-100 shadow-md rounded-lg p-6 hover:scale-105 transition ease-in-out dark:bg-gray-800">
         <h3 class="text-xl font-semibold mb-4">🧑‍🎓 교육 및 활동</h3>
-        <ul class="text-gray-800 leading-relaxed">
+        <ul class="text-gray-800 leading-relaxed dark:text-gray-300">
           <li>⭐ 한국소프트웨어산업협회(KOSA) - MSA 기반 풀스택 과정</li>
           <li>⭐ 인프런 - 워밍업 클럽 0기 백엔드</li>
           <li>⭐ 케이에듀한국정보교육원 - 자바, 스프링, 리액트로 시작하는 풀스택 개발</li>
         </ul>
       </article>
-      <article class="bg-gray-100 shadow-md rounded-lg p-6 hover:scale-105 transition ease-in-out">
+      <article class="bg-gray-100 shadow-md rounded-lg p-6 hover:scale-105 transition ease-in-out dark:bg-gray-800">
         <h3 class="text-xl font-semibold mb-4">👨‍💻 자격증</h3>
-        <ul class="text-gray-800 leading-relaxed">
+        <ul class="text-gray-800 leading-relaxed dark:text-gray-300">
           <li>⭐ SQLD</li>
           <li>⭐ PCCE - 프로그래머스</li>
           <li>⭐ COS PRO 2급 - JAVA</li>
@@ -77,27 +91,27 @@
   <section class="mb-16" id="skills">
     <h2 class="text-3xl font-bold mb-6">기술</h2>
     <div class="grid grid-cols-3 gap-4">
-      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out">
+      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out dark:bg-gray-800">
         <i class="fa-brands fa-java text-4xl text-red-400 mb-1"></i>
         <h3 class="font-semibold text-lg">JAVA</h3>
       </div>
-      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out">
+      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out dark:bg-gray-800">
         <img src="../asset/spring-icon-svgrepo-com.svg" alt="spring" class="w-9 h-9 mb-1" />
         <h3 class="font-semibold text-lg">Spring</h3>
       </div>
-      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out">
+      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out dark:bg-gray-800">
         <i class="fa-brands fa-vuejs text-4xl text-green-400 mb-1"></i>
         <h3 class="font-semibold text-lg">Vue.js</h3>
       </div>
-      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out">
-        <i class="fa-brands fa-square-js text-4xl bg-yellow-300 mb-1"></i>
+      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out dark:bg-gray-800">
+        <i class="fa-brands fa-square-js text-4xl bg-yellow-300 mb-1 "></i>
         <h3 class="font-semibold text-lg">Javascript</h3>
       </div>
-      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out">
+      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out dark:bg-gray-800">
         <i class="fa-brands fa-node-js text-4xl text-green-400 mb-1"></i>
         <h3 class="font-semibold text-lg">Node.js</h3>
       </div>
-      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out">
+      <div class="flex flex-col items-center bg-gray-100 shadow-md rounded-lg p-4 hover:scale-105 transition ease-in-out dark:bg-gray-800">
         <i class="fa-brands fa-react text-4xl text-blue-400 mb-1"></i>
         <h3 class="font-semibold text-lg">React</h3>
       </div>
@@ -107,75 +121,75 @@
   <section class="mb-16" id="projects">
     <h2 class="text-3xl font-bold mb-6">프로젝트</h2>
     <div class="grid grid-cols-2 gap-6">
-      <article class="bg-gray-100 rounded-lg shadow-lg hover:scale-105 transition ease-in-out overflow-hidden">
+      <article class="bg-gray-100 rounded-lg shadow-lg hover:scale-105 transition ease-in-out overflow-hidden dark:bg-gray-800">
         <img src="https://images.unsplash.com/photo-1716051696383-69e68fcf1b90?w=600" alt="ohmystreetfood" class="w-full h-48 object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-semibold mb-4 text-gray-800">길거리 음식점 웹사이트</h3>
+          <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">길거리 음식점 웹사이트</h3>
           <div class="gap-x-2 mb-8">
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Java</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">JSP</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Spring</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Mybatis</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Oracle</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Java</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">JSP</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Spring</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Mybatis</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Oracle</span>
           </div>
           <div class="flex justify-end space-x-2">
-            <a href="https://github.com/Yeong-Huns/OhMyStreetFood" class="bg-gray-600 text-sm text-white px-3 py-1 rounded-md hover:text-blue-500 hover:bg-gray-800">GitHub</a>
+            <a href="https://github.com/Yeong-Huns/OhMyStreetFood" class="bg-gray-600 text-sm text-white px-3 py-1 rounded-md hover:text-blue-500 hover:bg-gray-800 dark:bg-gray-300 dark:text-gray-800 dark:hover:bg-gray-400">GitHub</a>
           </div>
         </div>
       </article>
-      <article class="bg-gray-100 rounded-lg shadow-lg hover:scale-105 transition ease-in-out overflow-hidden">
+      <article class="bg-gray-100 rounded-lg shadow-lg hover:scale-105 transition ease-in-out overflow-hidden dark:bg-gray-800">
         <img src="https://images.unsplash.com/photo-1622050756792-5b1180bbb873?q=80&w=600" alt="latteve" class="w-full h-48 object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-semibold mb-4 text-gray-800">사이드 프로젝트 모집 플랫폼</h3>
+          <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">사이드 프로젝트 모집 플랫폼</h3>
 
           <div class="gap-x-2 mb-8">
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Java</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Vue.js</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">SpringBoot</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Node.js</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">MySQL</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">AWS</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Docker</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">RabbitMQ</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Socket.io</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Redis</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Java</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Vue.js</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">SpringBoot</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Node.js</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">MySQL</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">AWS</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Docker</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">RabbitMQ</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Socket.io</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Redis</span>
           </div>
           <div class="flex justify-end space-x-2">
-            <a href="https://github.com/KOSA-final-Project" class="bg-gray-600 text-sm text-white px-3 py-1 rounded-md hover:text-blue-500 hover:bg-gray-800">Back-end</a>
-            <a href="https://github.com/Jo0Yo0n/kosa-final-frontend" class="bg-gray-600 text-sm text-white px-3 py-1 rounded-md hover:text-blue-500 hover:bg-gray-800">Front-end</a>
+            <a href="https://github.com/KOSA-final-Project" class="bg-gray-600 text-sm text-white px-3 py-1 rounded-md hover:text-blue-500 hover:bg-gray-800 dark:bg-gray-300 dark:text-gray-800 dark:hover:bg-gray-400">Back-end</a>
+            <a href="https://github.com/Jo0Yo0n/kosa-final-frontend" class="bg-gray-600 text-sm text-white px-3 py-1 rounded-md hover:text-blue-500 hover:bg-gray-800 dark:bg-gray-300 dark:text-gray-800 dark:hover:bg-gray-400">Front-end</a>
           </div>
         </div>
       </article>
-      <article class="bg-gray-100 rounded-lg shadow-lg hover:scale-105 transition ease-in-out overflow-hidden">
+      <article class="bg-gray-100 rounded-lg shadow-lg hover:scale-105 transition ease-in-out overflow-hidden dark:bg-gray-800">
         <img src="https://images.unsplash.com/photo-1683029096295-7680306aa37d?q=80&w=600" alt="ohmystreetfood" class="w-full h-48 object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-semibold mb-4 text-gray-800">TTS(Text-to-speech)지원 디스코드 봇</h3>
+          <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">TTS(Text-to-speech)지원 디스코드 봇</h3>
 
           <div class="gap-x-2 mb-8">
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Javascript</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">node.js</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">discord.js</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Google-TTS</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Javascript</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">node.js</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">discord.js</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Google-TTS</span>
           </div>
           <div class="flex justify-end space-x-2">
-            <a href="https://github.com/Yeong-Huns/discord_BOT" class="bg-gray-600 text-sm text-white px-3 py-1 rounded-md hover:text-blue-500 hover:bg-gray-800">GitHub</a>
+            <a href="https://github.com/Yeong-Huns/discord_BOT" class="bg-gray-600 text-sm text-white px-3 py-1 rounded-md hover:text-blue-500 hover:bg-gray-800 dark:bg-gray-300 dark:text-gray-800 dark:hover:bg-gray-400">GitHub</a>
           </div>
         </div>
       </article>
-      <article class="bg-gray-100 rounded-lg shadow-lg hover:scale-105 transition ease-in-out overflow-hidden">
+      <article class="bg-gray-100 rounded-lg shadow-lg hover:scale-105 transition ease-in-out overflow-hidden dark:bg-gray-800">
         <img src="https://images.unsplash.com/photo-1531594896955-305cf81269f1?q=80&w=600" alt="javascript-game" class="w-full h-48 object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-semibold mb-4 text-gray-800">자바스크립트 게임</h3>
+          <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">자바스크립트 게임</h3>
 
           <div class="gap-x-2 mb-8">
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Java</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">JSP</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Spring</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Mybatis</span>
-            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300">Oracle</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Java</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">JSP</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Spring</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Mybatis</span>
+            <span class="bg-gray-200 text-xs px-2 py-0.5 rounded-md text-gray-700 border border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">Oracle</span>
           </div>
           <div class="flex justify-end space-x-2">
-            <a href="https://github.com/Yeong-Huns/JavaScriptGame" class="bg-gray-600 text-sm text-white px-3 py-1 rounded-md hover:text-blue-500 hover:bg-gray-800">GitHub</a>
+            <a href="https://github.com/Yeong-Huns/JavaScriptGame" class="bg-gray-600 text-sm text-white px-3 py-1 rounded-md hover:text-blue-500 hover:bg-gray-800 dark:bg-gray-300 dark:text-gray-800 dark:hover:bg-gray-400">GitHub</a>
           </div>
         </div>
       </article>
@@ -187,33 +201,33 @@
       <form id="contactForm" class="space-y-4">
         <div>
           <label for="name" class="block mb-1 font-medium">이름</label>
-          <input type='text' id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500" required/>
+          <input type='text' id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required/>
         </div>
         <div>
           <label for="email" class="block mb-1 font-medium">이메일</label>
-          <input type='email' id="email" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500" required/>
+          <input type='email' id="email" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required/>
         </div>
         <div>
           <label for="message" class="block mb-1 font-medium">메세지</label>
-          <textarea type='text' id="message" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500" required>
+          <textarea type='text' id="message" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
           </textarea>
         </div>
         <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-500 transition-colors">이메일 보내기</button>
       </form>
       <div class="flex flex-col items-center justify-center gap-y-4">
-        <a href="#" target="_blank" class="flex items-center space-x-2 text-gray-600 hover:text-blue-500 transition-colors">
+        <a href="#" target="_blank" class="flex items-center space-x-2 text-gray-600 hover:text-blue-500 transition-colors dark:text-gray-300">
           <i class="fa-brands fa-github"></i>
           <span>GitHub</span>
         </a>
-        <a href="#" target="_blank" class="flex items-center space-x-2 justify-center text-gray-600 hover:text-blue-500 transition-colors">
+        <a href="#" target="_blank" class="flex items-center space-x-2 justify-center text-gray-600 hover:text-blue-500 transition-colors dark:text-gray-300">
           <img src="../asset/notion-logo-svgrepo-com.svg" alt="notion" class="w-5 h-5" />
           <span>Notion</span>
         </a>
-        <a href="#" target="_blank" class="flex items-center space-x-2 justify-center text-gray-600 hover:text-blue-500 transition-colors">
+        <a href="#" target="_blank" class="flex items-center space-x-2 justify-center text-gray-600 hover:text-blue-500 transition-colors dark:text-gray-400">
           <img src="../asset/velog.svg" alt="velog" class="w-5 h-5"/>
           <span>Velog</span>
         </a>
-        <a href="#" target="_blank" class="flex items-center space-x-2 justify-center text-gray-600 hover:text-blue-500 transition-colors">
+        <a href="#" target="_blank" class="flex items-center space-x-2 justify-center text-gray-600 hover:text-blue-500 transition-colors dark:text-gray-300">
           <i class="fa-regular fa-envelope"></i>
           <span>vosxja1@gmail.com</span>
         </a>
@@ -221,10 +235,11 @@
     </div>
   </section>
 </main>
-<footer class="bg-gray-100 py-6">
+<footer class="bg-gray-100 py-6 dark:bg-gray-800">
   <div class="container max-w-4xl mx-auto px-6 text-center">
     <p>&copy; 2025 yeong-hun. All rights reserved.</p>
   </div>
 </footer>
+
 </body>
 </html>
