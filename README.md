@@ -1,4 +1,6 @@
-## 📌 Tailwind 를 활용한 포트폴리오 제작
+# 📌 Tailwind 를 활용한 포트폴리오 제작
+
+## 프로젝트 세팅
 
 ### 1.Tailwind CLI 생성
 
@@ -57,3 +59,25 @@ npx tailwind -i ./src/input.css -o ./src/output.css --watch
 </body>
 </html>
 ```
+
+## 기능
+
+### 1. `nav-bar`를 통한 section 이동 
+
+![화이트](https://github.com/user-attachments/assets/98768192-f7fe-4062-b171-6372a918127f)
+
+<br>
+<hr>
+
+### 2. `tailwind selector` 옵션을 활용한 다크모드 구현
+
+![다크](https://github.com/user-attachments/assets/7299c72a-bf46-49e1-b0f1-641d968c6c03)
+
+<br>
+<hr>
+
+### 3. `breakpoint` 를 활용한 반응형 페이지 구현
+
+![반응형](https://github.com/user-attachments/assets/d401c435-7d4c-44ba-a8ca-0dad42a08a27)
+
+
